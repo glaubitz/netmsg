@@ -1,0 +1,60 @@
+Net Message
+Version 1.2.0
+Information
+06/04/01
+
+- add a status bar to display connection status (Netscape like) - added 06/29/02
+- written in C using Win32 API directly
+- allows to establish a Net Message
+  message network:
+
+	1. every instance runs three threads
+		- main thread (window procs etc)
+		- listen thread (listen for new connections)
+		- receive thread (receive data)
+	2. every instance has a routing table that simply
+           stores what hop is to receive a message when
+           addressing a certain host
+	3. the main window features a list view that displays
+           all users available
+
+- alternative way for a network (05/03/05):
+
+	all participating clients simply store a hash-table
+	containing all users and their IP-addresses thus
+	being able to connect all partners directly.
+	on connecting a new client simply requests the
+	hash-table from the partner initially connecting to;
+	but on disconnecting it will have to broadcast
+	to all users to request removal out of the tables
+	
+
+source files:
+
+threads.c	- the two sub-threads
+
+routing.c	- code to manage and query the routing table
+
+netmsg.c	- main program code
+
+winsock.c	- functions for winsock access
+
+wndproc.c	- the window procedures
+
+- normal program run:
+
+	- server listens for new connections when
+          new user wants to connect to network
+        - new user sends broadcast message to all users
+        - every user updates his routing table with this
+          information:
+
+		struct NMUSER {
+
+			unsigned int address;
+			unsigned int interface;
+		}
+
+		address and interface can be the same
+		when the user is directly connected with
+		the host

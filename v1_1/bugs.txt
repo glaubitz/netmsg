@@ -1,0 +1,49 @@
+Net Message 1.1.2
+(c) A.Glaubitz
+BUGS
+11/15/2002
+------------------
+
+BUG01:
+
+When receiving a text larger than 128 characters,
+the host will crash when disconnecting.
+->fixed (06/04/01)
+
+BUG02:
+
+When typing a message and receiving a message before
+"send" was clicked, the message typed in will be lost.
+This is caused when the variables will be updated
+with UpdateData (), we need to call UpdateData ()
+first to save the unsent message into its variable.
+->fixed (06/06/01)
+
+BUG03:
+
+The "Receiving" window does not scroll automatically.
+->fixed (06/07/01)
+
+BUG04:
+
+When trying to dispatch a message with <Return> the
+main window will be closed.->fixed (06/07/01)
+
+BUG05:
+
+When starting an instance, clicking "Start Server",
+clicking "Cancel" in the SvrWaitDlg, then entering
+Host-IP: "127.0.0.1" and then connecting, the instance
+will establish a connection with itself.->fixed (06/07/01)
+
+BUG06:
+
+Does not check specified port for validity.
+
+BUG07:
+
+NetMessage does not complain when no port has been specified.
+Instead only the MFC internal value checker complains
+(in the OS installed native language :( ). After closing
+the MFC requester, NetMessage will still try to connect
+and of course fail.

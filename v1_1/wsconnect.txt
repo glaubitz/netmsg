@@ -1,0 +1,88 @@
+Establishing a TCP/IP socket connection under Windows Sockets
+05/08/2001
+
+WSAStartup - Initialize WINSOCK with process
+
+client:
+
+1. resolve server adress:
+
+a) BY HOST NAME
+
+gethostbyname(hostname) - throws back HOSTENT struct
+
+struct hostent {
+    char FAR *       h_name;
+    char FAR * FAR * h_aliases;
+    short            h_addrtype;
+    short            h_length;
+    char FAR * FAR * h_addr_list;
+};
+
+b) BY HOST ADRESS
+
+address = inet_addr (address_string) // converts string ("127.0.0.1") into address type
+gethostbyaddr (address) - throws HOSTENT struct
+
+2. fill in host socket address struct with preferences:
+
+	memset(&server,0,sizeof(server)); // reset address thru zeroing
+	memcpy(&(server.sin_addr),hp->h_addr,hp->h_length);
+	server.sin_family = hp->h_addrtype; // address type from HOSTENT struct
+	server.sin_port = htons(port); // store port in network byte order (bytes are exchanged), see beneath
+
+3. open a socket with socket ()
+
+4. connect(conn_socket,(struct sockaddr*)&server,sizeof(server) // connect with host socket
+
+5. now we can send with send ()
+
+6. close socket with closesocket()
+
+server:
+
+1. fill in server socket address struct with preferences:
+
+local.sin_family = AF_INET;
+local.sin_addr.s_addr = (!interface)?INADDR_ANY:inet_addr(interface);
+local.sin_port = htons(port); // s.a.
+
+
+2. create new socket with socket ()
+
+3. bind the socket to the local address using bind ()
+
+4. calling listen () lets a socket wait for an incoming connection
+
+5. accept () connects with the first waiting connection on the socket
+
+6. now we can receive with recv ()
+
+7. close socket with closesocket ()
+
+At the end:
+
+WSACleanUp () - clean up WINSOCK
+
+u_short WSAAPI htons(u_short hostshort) {
+
+	/*
+	765F102A   movzx       ecx,word ptr [esp+4]
+	765F102F   mov         eax,ecx
+	765F1031   xor         edx,edx
+	765F1033   shr         eax,8
+	765F1036   mov         dh,cl
+	765F1038   or          eax,edx
+	765F103A   ret         4
+	*/
+
+	WORD x = 0;
+
+	x = LOBYTE(hostshort);
+
+	hostshort = hostshort >> 8;
+
+	hostshort = hostshort | (x << 8);
+
+	return hostshort;
+}

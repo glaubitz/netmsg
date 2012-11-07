@@ -1,0 +1,26 @@
+Net Message
+Version 1.3.0
+Information
+02/28/02
+
+
+#include "v1_2.txt" (all features of version 1.2) :)
+
+1.3 will feature addtionally the capability to search other
+NetMessage users being online in certain subnets that have
+been stored addtionally to the NMUSER-struct. Then we need
+to have an unique ID for any user so that only users online
+will be added to the list who are really the searchers pal.
+
+The search will be performed on logging on and on clicking a
+button like "Update User List".
+
+The search goes as follows:
+
+	- go online
+	- LOOP:
+		- go through the NMUSER-list
+		- search a specified subnet for running NetMessage 1.3 or higher
+		- check the UID of a user found
+		- add to list if UID corresponds with UID in current NMUSER-struct
+	- DONE

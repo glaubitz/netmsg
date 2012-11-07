@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Erstellungsprotokoll</h1>
+<h3>
+--------------------Konfiguration: netmsg - Win32 Debug--------------------
+</h3>
+<h3>Befehlszeilen</h3>
+Erstellen der temporären Datei  "C:\WINDOWS\TEMP\RSPF2D2.TMP" mit Inhalten
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Debug/" /Fp"Debug/netmsg.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\home\proj\sources\netmsg\v1_2\netmsg.c"
+"C:\home\proj\sources\netmsg\v1_2\routing.c"
+"C:\home\proj\sources\netmsg\v1_2\talk.c"
+"C:\home\proj\sources\netmsg\v1_2\threads.c"
+"C:\home\proj\sources\netmsg\v1_2\winsock.c"
+"C:\home\proj\sources\netmsg\v1_2\wndproc.c"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPF2D2.TMP" 
+Erstellen der temporären Datei  "C:\WINDOWS\TEMP\RSPF2D3.TMP" mit Inhalten
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wsock32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/netmsg.pdb" /debug /machine:I386 /out:"Debug/netmsg.exe" /pdbtype:sept 
+.\Debug\Cfgfile.obj
+.\Debug\netmsg.obj
+.\Debug\routing.obj
+.\Debug\talk.obj
+.\Debug\threads.obj
+.\Debug\winsock.obj
+.\Debug\wndproc.obj
+.\Debug\netmsg.res
+]
+Erstellen der Befehlzeile "link.exe @C:\WINDOWS\TEMP\RSPF2D3.TMP"
+<h3>Ausgabefenster</h3>
+Kompilierung läuft...
+netmsg.c
+routing.c
+talk.c
+threads.c
+winsock.c
+wndproc.c
+C:\home\proj\sources\netmsg\v1_2\wndproc.c(78) : Warnung C4715: 'MainDlgProc' : Nicht alle Steuerelementpfade geben einen Wert zurück
+C:\home\proj\sources\netmsg\v1_2\wndproc.c(104) : Warnung C4715: 'AboutDlgProc' : Nicht alle Steuerelementpfade geben einen Wert zurück
+Linker-Vorgang läuft...
+Erstellen der Befehlzeile "bscmake.exe /nologo /o"Debug/netmsg.bsc"  .\Debug\Cfgfile.sbr .\Debug\netmsg.sbr .\Debug\routing.sbr .\Debug\talk.sbr .\Debug\threads.sbr .\Debug\winsock.sbr .\Debug\wndproc.sbr"
+Browse-Informationsdatei wird erstellt...
+<h3>Ausgabefenster</h3>
+
+
+
+<h3>Ergebnisse</h3>
+netmsg.exe - 0 Fehler, 0 Warnung(en)
+</pre>
+</body>
+</html>

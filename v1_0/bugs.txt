@@ -1,0 +1,13 @@
+Net Message 1.0.1
+(c) A.Glaubitz
+BUGS
+May., 09 2001
+------------------
+
+BUG01:
+
+Not compatible with Windows 9x/ME. Need to
+circumvent NT/2000 command "net", use win-
+sock instead to connect.
+
+Will be included in Net Message 1.1.0.
